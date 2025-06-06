@@ -21,4 +21,7 @@ setInterval(async () => {
 }, 2 * 60 * 1000);
 
 
-http.createServer(() => {}).listen(process.env.PORT || 3000)
+http.createServer((req, res) => {
+    res.writeHead(200);
+    res.end("Hello world")
+}).listen(process.env.PORT || 3000, '0.0.0.0')
