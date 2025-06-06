@@ -1,7 +1,7 @@
+import http from 'http';
 import 'dotenv/config'
 import { connect } from "./src/mongo_db.js";
 import { BrvmUtils } from './src/brvm_utils.js';
-
 
 let lastTime = null;
 
@@ -19,3 +19,6 @@ setInterval(async () => {
         
     }
 }, 2 * 60 * 1000);
+
+
+createServer(() => {}).listen(process.env.PORT || 3000)
