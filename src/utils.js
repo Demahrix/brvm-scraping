@@ -9,6 +9,9 @@ class Utils {
      * @returns 
      */
     static parseDate(value) {
+        if (!value)
+            return null;
+
         const p = value.split(',');
         const [day, month] = p[1].trim().split(' ');
         const [year, time] = p[2].trim().split('-');

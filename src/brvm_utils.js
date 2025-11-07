@@ -13,7 +13,11 @@ class BrvmUtils {
             throw Error(content);
 
         const root = parse(content);
-        const date = Utils.parseDate(root.getElementById('block-tools-date-maj').textContent.trim());
+        const date = Utils.parseDate(root.getElementById('block-tools-date-maj')?.textContent?.trim());
+
+        if (date == null)
+            throw Error('Empty date');
+
         const table = root.getElementsByTagName('table')[3];
 
         const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
