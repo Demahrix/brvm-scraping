@@ -1,0 +1,25 @@
+name: BRVM Stock Task
+
+on:
+  schedule:
+    - cron: '*/7 * * * *'  # Toutes les 7 minutes
+  workflow_dispatch:        # Lancement manuel possible
+
+jobs:
+  task:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Run task
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+        run: node task.js

@@ -14,12 +14,12 @@ setInterval(async () => {
 
     try {
         const registerAt = new Date();
-        await client.db('brvm').collection('stock').insertMany(data.map(e => ({ ...e, registerAt })));
+        await client.db('brvm').collection('stock_2026').insertMany(data.map(e => ({ ...e, registerAt })));
         lastTime = data[0].date.getTime();
     } catch (err) {
         
     }
-}, 2 * 60 * 1000);
+}, 7 * 60 * 1000);
 
 
 http.createServer((req, res) => {
